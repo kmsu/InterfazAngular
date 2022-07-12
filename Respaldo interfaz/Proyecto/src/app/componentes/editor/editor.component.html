@@ -1,0 +1,52 @@
+<!-- Estilos de codemirror (para la numeración de lineas)-->
+<link 
+  rel="stylesheet" 
+  href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.css"
+  integrity="sha512-7vaQ4LLdaXd2IuMd4MUQ6LRFIGbEwJI1aq6KYqL3RjbdQyUkRFhwZKmqmkBXurTFdGlx687lTN8FSJfX6Df8Gw=="
+  crossorigin="anonymous" 
+  referrerpolicy="no-referrer" 
+/>
+
+<link 
+  rel="stylesheet" 
+  href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/shadowfox.css"
+  integrity="sha512-KWNbU5cptS+PrVsnPPaIwq3FDZg/U8gzfTm/bagdcxMp/o2hPryoISPGbBLd8s1ssnmEez9cliFBn4psD/d45A=="
+  crossorigin="anonymous" 
+  referrerpolicy="no-referrer" 
+/>
+
+<!--Libreria de codemirror-->
+<script 
+  src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"
+  integrity="sha512-hG/Qw6E14LsVUaQRSgw0RrFA1wl5QPG1a4bCOUgwzkGPIVFsOPUPpbr90DFavEEqFMwFXPVI0NS4MzKsInlKxQ=="
+  crossorigin="anonymous" 
+  referrerpolicy="no-referrer"
+></script>
+
+<!---- ENTRADA -->
+<style>
+    .Codemirror {
+    font-size: 16px;
+  }
+
+</style>
+
+
+<label for="txtEntrada" class="form-label mt-4">Entrada</label>
+<textarea
+  class="form-control"
+  id="txtEntrada"
+  cols="90"
+  rows="50"
+  spellcheck="false"
+  style="height: 264px"
+></textarea>
+
+<!--Aca se encuentran los scripts-->
+<script lang="javascript">
+  //Se declara un editor para manipular el textarea de entrada.
+  var editor = CodeMirror.fromTextArea(document.getElementById('txtEntrada'), {
+    lineNumbers: true,
+    theme: 'shadowfox'
+  });
+</script>
