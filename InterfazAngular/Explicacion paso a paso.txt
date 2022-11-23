@@ -1,0 +1,84 @@
+1. crear proyecto angular
+	ng new nombreProyecto 
+        aceptar "add angular routing
+        dejar para usar CSS
+
+2. ir a la carpeta de nombreProyecto
+    cd nombreProyecto
+    ng serve -o (el -o es para que abra automaticamente, de lo contrario ir al navegador y escribir localhost: 4200)
+        Nota: el puerto por defecto es 4200
+
+Nota: comandos a usar
+    ng comando para iniciar accion desde angular
+    g generate (para generar un objeto)
+    m modulos (module)
+    c componentes (components)
+
+GENERAR MODULOS 
+3. ng g m componentes/componentes --flat (--flat es para no crear una carpeta de mas)
+4. ng g m paginas/paginas --flat
+
+GENERAR COMPONENTES
+5. ng g c componentes/navbar //creo el primer componente que sera mi barra de navegacion
+6. ng g c paginas/home //creo la pagina inicial
+
+NOTA: En index.html copiar el codigo de bootstrap para dar estilos. También se modifica el icono
+de la web app si se desea.
+
+Nota2: en assets crear una carpeta con imagenes/iconos si se desean usar
+
+7. ir a app.module.ts e importar
+    componentesModule
+    pagesModule
+
+8. agregar el componente navbar en app.component.html (la principal donde esta toda la app de angular)
+    Nota: el error se corrige en el paso 9
+
+9. exportar en componentes.module.ts el componente. Se colocan despues de los imports de la siguente forma
+    EJEMPLO
+	imports: [
+    		CommonModule
+  	],
+  	exports: [
+    		NavbarComponent
+  	]
+    Este paso de importar se realiza siempre que se crea un nuevo componente que se quiera usar en las paginas
+
+10. En app-routing.module.ts agregar las rutas
+	const routes: Routes = [
+  		{ path: 'home', component: HomeComponent },
+  		{ path: '**', pathMatch: 'full', redirectTo: 'home' } //para que lo que no este definido redirija a home
+	];
+    Aqui se agregan todas las paginas (componentes) que cree
+
+11. en pages.module.ts importar el modulo de componentes para poder utilizarlos en la pagina
+
+	imports: [
+    		CommonModule,
+    		ComponentesModule
+  	]
+
+12. ng g s servicios/nombreServicio //crea un servicio que usare para enviar textos a los componentes
+
+13. en data.service.ts
+    en la linea import agregar EventEmitter
+    import { Injectable, EventEmitter } from '@angular/core';
+
+14. agregar el evento
+    nombre$ = new EventEmitter<string>();
+    NOTA: $ solo sirve para indicar que es un observable 
+    NOTA2: <string> Podría no ir pero es bueno indicar que tipo de parametro esta enviando el servicio
+
+MANEJO DE RUTAS (PAGINAS)
+15. agregar los componentes a usar en el home
+
+16. en componentes.module.ts importar RouterModule para tener todas las funciones de la libreria
+    imports: [
+    CommonModule,
+    RouterModule
+  ],
+
+17. En la barra de navegacion usar
+    <a class="nav-item nav-link" routerLinkActive="active" routerLink="home">Home</a>
+    para dirigir a las paginas que se estan usando. lo que realiza este procesos son las sentencias router
+    NOTA: en routerLink debe tener el mismo nombre que app-routing.module.ts (rutas)
